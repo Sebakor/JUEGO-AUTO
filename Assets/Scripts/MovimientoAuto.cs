@@ -59,6 +59,12 @@ public class MovimientoAuto : MonoBehaviour
 
         if(other.gameObject.name == "Rampa" || other.gameObject.name == "Salto"){
             salto = true;
+            JumpForce = 15;
+        }
+
+        if(other.gameObject.name == "PlataformaSalto"){
+            salto = true;
+            JumpForce = 8;
         }
     }
 }
