@@ -18,6 +18,8 @@ public class MovimientoAuto : MonoBehaviour
     public Text txtTiempo;
     public Text textoGanar;
     public Image panel;
+    public AudioManager miAM;
+    public AudioManager miAM2;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class MovimientoAuto : MonoBehaviour
         JumpForce = 15;
         VelMovimiento = 0.1f;
         RotacionVel = 0.1f;
+        
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class MovimientoAuto : MonoBehaviour
         
             if (Input.GetKey(KeyCode.S)){
                 transform.Translate(VelMovimiento,0,0);
+                miAM2.Frenos();
             }
             
             if (Input.GetKey(KeyCode.W)){
@@ -87,6 +91,7 @@ public class MovimientoAuto : MonoBehaviour
         
         if(other.gameObject.name == "Caja" || other.gameObject.name == "Cylinder(Clone)"){
             Gano = false;
+            miAM.Choque();
             StartCoroutine(ConfetiYCosas());
         }
 
